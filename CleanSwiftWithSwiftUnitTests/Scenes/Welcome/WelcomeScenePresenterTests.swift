@@ -36,6 +36,6 @@ final class WelcomeScenePresenterTests: XCTestCase {
 // swiftlint:disable colon
 final class WelcomeSceneViewControllerMock:
     WelcomeSceneViewControllerInput {
-    var viewModel: WelcomeSceneViewModel?
+    var viewModel: WelcomeSceneViewModelInterface?
     var router: WelcomeSceneRoutingLogic?
 }

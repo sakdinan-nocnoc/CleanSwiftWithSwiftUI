@@ -9,7 +9,7 @@ import XCTest
 // swiftlint:disable force_cast
 final class WelcomeSceneViewModelTests: XCTestCase {
     
-    private var sut: WelcomeSceneViewModel!
+    private var sut: WelcomeSceneViewModelInterface!
     private var viewController: UIViewControllerMock!
     
     override func setUp() {
@@ -19,7 +19,7 @@ final class WelcomeSceneViewModelTests: XCTestCase {
         
         viewController = UIViewControllerMock()
         sut = DefaultWelcomeSceneViewModel(text: "", buttonText: "")
-        sut.delegate = viewController
+        sut.input = viewController
     }
     
     override func tearDown() {
@@ -32,10 +32,10 @@ final class WelcomeSceneViewModelTests: XCTestCase {
 
 // swiftlint:disable colon
 private final class UIViewControllerMock:
-    UIViewController, WelcomeSceneViewDelegate {
+    UIViewController, WelcomeSceneViewInput {
     
     var didSelectButtonCalled = false
-    func didSelectButton(_ sender: WelcomeSceneViewModel?) {
+    func didSelectButton(_ sender: WelcomeSceneViewModelInterface?) {
         didSelectButtonCalled = true
     }
 }

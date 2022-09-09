@@ -5,18 +5,18 @@
 
 import SwiftUI
 
-protocol WelcomeSceneViewDelegate: AnyObject {
-    func didSelectButton(_ sender: WelcomeSceneViewModel?)
+protocol WelcomeSceneViewInput: AnyObject {
+    func didSelectButton(_ sender: WelcomeSceneViewModelInterface?)
 }
 
-protocol WelcomeSceneViewModel {
-    var delegate: WelcomeSceneViewDelegate? { get set }
+protocol WelcomeSceneViewModelInterface {
+    var input: WelcomeSceneViewInput? { get set }
     var text: String { get }
     var buttonText: String { get }
 }
 
-final class DefaultWelcomeSceneViewModel: WelcomeSceneViewModel {
-    var delegate: WelcomeSceneViewDelegate?
+final class DefaultWelcomeSceneViewModel: WelcomeSceneViewModelInterface {
+    var input: WelcomeSceneViewInput?
     @Published private(set) var text: String
     @Published private(set) var buttonText: String
     

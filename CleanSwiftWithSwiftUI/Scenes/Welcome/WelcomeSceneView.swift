@@ -6,15 +6,25 @@
 import SwiftUI
 
 struct WelcomeSceneView: View {
-    let viewModel: WelcomeSceneViewModel
+    let viewModel: WelcomeSceneViewModelInterface
     
     var body: some View {
         VStack {
             Text(viewModel.text)
             Divider()
             Button(viewModel.buttonText) {
-                viewModel.delegate?.didSelectButton(viewModel)
+                viewModel.input?.didSelectButton(viewModel)
             }
         }
+    }
+}
+
+struct WelcomeSceneView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = DefaultWelcomeSceneViewModel(
+            text: "Hello World",
+            buttonText: "Tap test"
+        )
+        WelcomeSceneView(viewModel: viewModel)
     }
 }

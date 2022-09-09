@@ -26,3 +26,10 @@ struct OtherSceneView: View {
         }
     }
 }
+
+struct OtherSceneView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = DefaultOtherSceneViewModel()
+        OtherSceneView(viewModel: viewModel)
+    }
+}

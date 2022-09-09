@@ -17,8 +17,6 @@ final class WelcomeScenePresenter {
 
 extension WelcomeScenePresenter: WelcomeScenePresenterInput {
     func showDetails() {
-        viewController?.router?.showDetails(
-            viewModel: DefaultDetailsSceneViewModel(text: "Details")
-        )
+        viewController?.displayDetails()
     }
 }

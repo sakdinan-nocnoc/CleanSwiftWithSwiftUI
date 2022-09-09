@@ -7,8 +7,7 @@ import UIKit
 import SwiftUI
 
 protocol WelcomeSceneViewControllerInput: AnyObject {
-    var router: WelcomeSceneRoutingLogic? { get set }
-    var viewModel: WelcomeSceneViewModel? { get set }
+    func displayDetails()
 }
 
 typealias WelcomeSceneViewControllerOutput = WelcomeSceneInteractorInput
@@ -16,13 +15,18 @@ typealias WelcomeSceneViewControllerOutput = WelcomeSceneInteractorInput
 final class WelcomeSceneViewController: UIHostingController<WelcomeSceneView> {
     var interactor: WelcomeSceneViewControllerOutput?
     var router: WelcomeSceneRoutingLogic?
-    var viewModel: WelcomeSceneViewModel?
+    var viewModel: WelcomeSceneViewModelInterface?
 }
 
-extension WelcomeSceneViewController: WelcomeSceneViewControllerInput {}
+extension WelcomeSceneViewController: WelcomeSceneViewControllerInput {
+    func displayDetails() {
+        let viewModel = DefaultDetailsSceneViewModel(text: "Details")
+        router?.showDetails(viewModel: viewModel)
+    }
+}
 
-extension WelcomeSceneViewController: WelcomeSceneViewDelegate {
-    func didSelectButton(_ sender: WelcomeSceneViewModel?) {
+extension WelcomeSceneViewController: WelcomeSceneViewInput {
+    func didSelectButton(_ sender: WelcomeSceneViewModelInterface?) {
         interactor?.details()
     }
 }

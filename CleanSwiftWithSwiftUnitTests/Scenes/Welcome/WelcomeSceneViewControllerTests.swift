@@ -58,9 +58,9 @@ final class WelcomeSceneRouterMock:
     }
 }
 
-final class WelcomeSceneViewModelMock: WelcomeSceneViewModel {
+final class WelcomeSceneViewModelMock: WelcomeSceneViewModelInterface {
     var text: String = ""
     var buttonText: String = ""
     
-    var delegate: WelcomeSceneViewDelegate?
+    var input: WelcomeSceneViewInput?
 }

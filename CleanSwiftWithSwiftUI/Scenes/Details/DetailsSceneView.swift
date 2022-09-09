@@ -14,3 +14,10 @@ struct DetailsSceneView: View {
         }
     }
 }
+
+struct DetailsSceneView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = DefaultDetailsSceneViewModel(text: "Details")
+        DetailsSceneView(viewModel: viewModel)
+    }
+}
